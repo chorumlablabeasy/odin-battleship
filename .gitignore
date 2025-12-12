@@ -1,0 +1,65 @@
+# ----------------------------------------------------------------------
+# 1. BAĞIMLILIKLAR (Dependencies)
+# ----------------------------------------------------------------------
+
+# node.js paketleri (Çok büyük, asla commit edilmemeli)
+/node_modules
+
+# pnpm kilit dosyaları
+/pnpm-lock.yaml
+
+# Yarn kilit dosyaları
+/yarn.lock
+
+# ----------------------------------------------------------------------
+# 2. DERLEME VE ÇIKTI DOSYALARI (Build and Output)
+# ----------------------------------------------------------------------
+
+# Webpack tarafından oluşturulan çıktı klasörü
+/dist
+/build
+
+# Varsa geçici derleme klasörleri
+/tmp
+
+# ----------------------------------------------------------------------
+# 3. LOG VE HATA AYIKLAMA (Logs and Debugging)
+# ----------------------------------------------------------------------
+
+npm-debug.log*
+.eslintcache
+.stylelintcache
+
+# ----------------------------------------------------------------------
+# 4. ÇEVRESEL DEĞİŞKENLER (Environment Variables)
+# ----------------------------------------------------------------------
+
+# Hassas bilgileri tutar, asla commit edilmemeli
+.env
+.env.local
+.env.development
+.env.production
+
+# ----------------------------------------------------------------------
+# 5. İŞLETİM SİSTEMİ VE EDİTÖR ÖZEL DOSYALARI
+# ----------------------------------------------------------------------
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+# vscode'un otomatik kaydettiği yerel ayarları da ignore et
+.vscode/*.local
+
+# Diğer Editorler
+*.sublime-project
+*.sublime-workspace
