@@ -1,6 +1,6 @@
 // webpack.config.js
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Web Template',
-      template: './src/index.html'
+      template: './src/index.html',
     }),
   ],
   output: {
@@ -43,4 +43,4 @@ module.exports = {
       },
     ],
   },
-};
+}
