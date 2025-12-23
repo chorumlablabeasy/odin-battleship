@@ -2,7 +2,7 @@ class Gameboard {
   constructor() {
     this.map = createMap(10)
     this.ships = []
-    this.unhittableSquares = new Set()
+    this.attacks = new Map()
   }
 
   placeShip(ship, x, y, direction) {
@@ -79,6 +79,39 @@ class Gameboard {
 
       return true
     }
+  }
+
+  receiveAttack(x , y) {
+    if (x < 0 || y < 0 || x >= 10 || y >= 10) {
+      throw new Error('Koordinatlar harita sınırları dışında!')
+    }
+
+    const coord = `${x},${y}`
+
+    if (this.attacks.has(coord)) {
+      return false
+    }
+
+    if (this.map[y][x]) {
+      const ship = this.map[y][x]
+
+      ship.hit()
+      this.attacks.set(coord, 'hit')
+    } else {
+      this.attacks.set(coord, 'miss')
+    }
+
+    return true
+  }
+
+  isAllSunk() {
+    this.ships.forEach((ship) => {
+      if (ship.sunk === false) {
+        return false
+      }
+    })
+
+    return true
   }
 }
 
