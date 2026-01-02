@@ -81,7 +81,7 @@ class Gameboard {
     }
   }
 
-  receiveAttack(x , y) {
+  receiveAttack(x, y) {
     if (x < 0 || y < 0 || x >= 10 || y >= 10) {
       throw new Error('Koordinatlar harita sınırları dışında!')
     }

@@ -73,14 +73,14 @@ describe('receiveAttack metodu doğru çalışmalı', () => {
     board.receiveAttack(1, 1)
 
     expect(board.attacks.get('1,1')).toBe('miss')
-  });
+  })
 
   test('Gemi vurulduğunda attacks içinde "hit" olarak işaretlenmeli', () => {
     board.placeShip(ship, 2, 2, 'horizontal')
     board.receiveAttack(2, 2)
 
     expect(board.attacks.get('2,2')).toBe('hit')
-  });
+  })
 
   test('Ateş edilen nokta attacks içindeyse ateş edilmemeli', () => {
     board.receiveAttack(1, 1)

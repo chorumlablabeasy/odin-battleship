@@ -1,6 +1,10 @@
 class DomManager {
-  renderBoard(containerId) {
+  renderBoard(containerId, handleCellClick) {
     const container = document.getElementById(containerId)
+
+    if (!container) return
+
+    container.innerHTML = ''
 
     for (let i = 0; i < 100; i++) {
       const cell = document.createElement('div')
@@ -11,23 +15,29 @@ class DomManager {
       cell.dataset.x = x
       cell.dataset.y = y
 
-      cell.addEventListener('click', () => {
-        handleCellClick(x, y)
-      })
+      if (handleCellClick) {
+        cell.addEventListener('click', () => {
+          handleCellClick(x, y)
+        })
+      }
 
       container.appendChild(cell)
     }
   }
 
+  
   updateBoard(containerId, gameboard, isEnemy = false) {
     const container = document.getElementById(containerId)
+    if (!container) return
+
     const cells = container.querySelectorAll('.cell')
 
     cells.forEach((cell) => {
       const x = parseInt(cell.dataset.x)
       const y = parseInt(cell.dataset.y)
       const cellData = gameboard.map[y][x]
-      const isShot = gameboard.attacks.get(`${x},${y}`)
+
+      const isShot = gameboard.attacks.has(`${x},${y}`)
 
       cell.classList.remove('ship', 'hit', 'miss')
 
@@ -39,7 +49,6 @@ class DomManager {
       }
     })
   }
-  
 }
 
 export { DomManager }

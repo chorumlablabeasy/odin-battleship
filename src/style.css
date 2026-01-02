@@ -1,0 +1,77 @@
+/* Genel Sayfa Düzeni */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#game-container {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+}
+
+.board-wrapper h2 {
+  text-align: center;
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* Tahta Yapısı */
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 32px);
+  grid-template-rows: repeat(10, 32px);
+  border: 2px solid #000;
+  background-color: #000;
+  gap: 1px;
+}
+
+/* Hücreler */
+.cell {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.1s;
+}
+
+.cell:hover {
+  background-color: #f0f0f0; /* Mouse üzerindeyken hafif gri */
+}
+
+/* Durum Renkleri */
+.cell.ship {
+  background-color: #d1d1d1; /* Gemi: Açık gri/metalik */
+  border: 2px solid #555; /* Gemiyi belirginleştirmek için iç kenarlık */
+  box-sizing: border-box;
+}
+
+.cell.miss {
+  background-color: #e3f2fd; /* Iskalama: Çok açık mavi */
+}
+
+.cell.miss::after {
+  content: '•'; /* Iskalama işareti: Nokta */
+  color: #2196f3;
+  font-size: 24px;
+}
+
+.cell.hit {
+  background-color: #ffebee; /* İsabet: Çok açık kırmızı */
+}
+
+.cell.hit::after {
+  content: '×'; /* İsabet işareti: Çarpı */
+  color: #f44336;
+  font-size: 24px;
+  font-weight: bold;
+}
